@@ -14,9 +14,10 @@
 #define MaxNumberOfSymbols 50
 #define MaxLengthOfTape 100
 
+// Encode one entry in the transition table
 typedef struct {
   int newstate;
-  char mvwr;
+  char mvwr; // Either a <symbol> to be written or a movement, 'L' or 'R'
 } transition;
 
 int number_of_states;
@@ -24,7 +25,7 @@ int number_of_symbols;
 char symbols[MaxNumberOfSymbols];
 transition transition_table[MaxNumberOfSymbols][MaxNumberOfStates];
 char tape[MaxLengthOfTape+1];
-int current_tape_pos;
+int current_head_pos;
 int current_state = 0;
 
 void error(char *err_msg) {
@@ -36,7 +37,7 @@ int getSymbolIndex(char symbol) {
 	int i=0;
 	while (symbols[i] != '\0' && symbols[i] != symbol) i++;
 	if (symbols[i] == '\0') {
-		fprintf(stderr, "getSymbolIndes: Request for"
+		fprintf(stderr, "getSymbolIndex: Request for"
 			" undefined symbol: %c\n", symbol);
 		exit(1);
 	}
@@ -44,15 +45,15 @@ int getSymbolIndex(char symbol) {
 }
 
 void printTape() {
-	if (strlen(tape) < current_tape_pos+1){
+	if (strlen(tape) < current_head_pos+1){
 		printf("%s", tape);
-		for (int i=strlen(tape); i<= current_tape_pos; i++)
+		for (int i=strlen(tape); i<= current_head_pos; i++)
 			printf("#");
 	} else {
 		printf("%s#", tape);
 	}
 	printf("... (%i)\n", current_state);
-	for (int i=0; i<current_tape_pos; i++)
+	for (int i=0; i<current_head_pos; i++)
 		printf(" ");
 	printf("^\n");
 }
@@ -114,8 +115,8 @@ void initTM(){
 	scanf("%s", tape);
 	printf("Tape: %s\n", tape);
 	scanf("\n");
-	scanf("%i", &current_tape_pos);
-	printf("%i\n", current_tape_pos);
+	scanf("%i", &current_head_pos);
+	printf("Initial head position: %i\n", current_head_pos);
 	printTape();
 	printTransitionTable();
 }
@@ -123,18 +124,18 @@ void initTM(){
 void executeTM() {
 	int steps = 0;
 	while (current_state < number_of_states) {
-		transition curr_trans = transition_table[getSymbolIndex(tape[current_tape_pos])][current_state];
+		transition curr_trans = transition_table[getSymbolIndex(tape[current_head_pos])][current_state];
 		if (curr_trans.mvwr == 'L'  ) {
-			if ( current_tape_pos > 0)
-				current_tape_pos--;
+			if ( current_head_pos > 0)
+				current_head_pos--;
 		} else if (curr_trans.mvwr == 'R') {
-			if (current_tape_pos < MaxLengthOfTape) {
-				current_tape_pos++;
-				if (tape[current_tape_pos] == '\0')
-						tape[current_tape_pos] = '#';
+			if (current_head_pos < MaxLengthOfTape) {
+				current_head_pos++;
+				if (tape[current_head_pos] == '\0')
+						tape[current_head_pos] = '#';
 			}
 		} else {
-			tape[current_tape_pos] = curr_trans.mvwr;
+			tape[current_head_pos] = curr_trans.mvwr;
 		}
 		current_state = curr_trans.newstate;
 		printf("Step %i\n", ++steps);

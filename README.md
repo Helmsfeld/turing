@@ -35,7 +35,7 @@ The input files should have the following format, see the example files.
 Remarks
 -------
 
-Reading the turing machine is not very robust, therefore some remakrs are in order.
+Reading the turing machine is not very robust, therefore some remarks are in order.
 
 * The transition table is not very readable, i know, sorry.
 * Comments can only occur directly before the transition table.
@@ -44,4 +44,5 @@ Reading the turing machine is not very robust, therefore some remakrs are in ord
 * The number of the halting state is `<number of states>`
 * There must be exactly one space to seperate each entry in the transition table and no trailing spaces at the end of a line!
 
-There are probably some other implicit assumptions i forgot to mention (no empty lines, or so), if you find any bugs, you are more than welcome to fix them.
+There are probably some other implicit assumptions i forgot to mention (no empty lines, or so), if you find any bugs, 
+you are welcome to either tell me or to fix them.
