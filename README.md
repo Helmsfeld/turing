@@ -5,14 +5,18 @@ Compilation
 -----------
 
 A simple
+
 	make
+
 should do.
 
 Running the examples
 --------------------
 
 Type
+
 	cat examples/Turing1.in - | ./turing
+
 to get startet.
 
 
