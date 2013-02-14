@@ -1,0 +1,8 @@
+13
+#ab
+! 00   1   2   3   4   5   6   7   8   9    10   11   12 
+# 14 # 2 R 3 R 4 a 5 L 6 a 6 # 8 R 9 R 10 b 11 L 12 b 12 R
+a 01 # 1 a 2 R 3 R 4 L 5 L 0 R 7 a 8 R 09 R 10 L 11 L 12 a
+b 07 # 1 b 2 R 3 R 4 L 5 L 6 b 7 b 8 R 09 R 10 L 11 L 00 R
+aabbab#
+0

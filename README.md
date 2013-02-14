@@ -1,0 +1,43 @@
+Crude Turing Machine Emulator
+=============================
+
+Compilation
+-----------
+
+A simple
+	make
+should do.
+
+Running the examples
+--------------------
+
+Type
+	cat examples/Turing1.in - | ./turing
+to get startet.
+
+
+Format of the input files
+-------------------------
+
+The input files should have the following format, see the example files.
+
+	<Number of states>
+	<Alphabet>
+	[Optional: One or more lines of comments, starting with '!']
+	(<Symbol read> ( <New state> ( <Symbol to be written>  | L | R  ) )+ )+
+	<Initial tape>
+	<Initial position of read/write head, 0 is leftmost position>
+
+Remarks
+-------
+
+Reading the turing machine is not very robust, therefore some remakrs are in order.
+
+* The transition table is not very readable, i know, sorry.
+* Comments can only occur directly before the transition table.
+* Internally, the states are numbered from `0` to `<number of states>-1`.
+* There must be exactly one entry (column) for each state.
+* The number of the halting state is `<number of states>`
+* There must be exactly one space to seperate each entry in the transition table and no trailing spaces at the end of a line!
+
+There are probably some other implicit assumptions i forgot to mention (no empty lines, or so), if you find any bugs, you are more than welcome to fix them.
