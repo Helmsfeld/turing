@@ -131,8 +131,10 @@ void executeTM() {
 		} else if (curr_trans.mvwr == 'R') {
 			if (current_head_pos < MaxLengthOfTape) {
 				current_head_pos++;
-				if (tape[current_head_pos] == '\0')
+				if (tape[current_head_pos] == '\0') {
 						tape[current_head_pos] = '#';
+						tape[current_head_pos+1] = '\0'; 
+				}
 			}
 		} else {
 			tape[current_head_pos] = curr_trans.mvwr;

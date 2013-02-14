@@ -43,6 +43,7 @@ Reading the turing machine is not very robust, therefore some remarks are in ord
 * There must be exactly one entry (column) for each state.
 * The number of the halting state is `<number of states>`
 * There must be exactly one space to seperate each entry in the transition table and no trailing spaces at the end of a line!
+* An empty entry is assumed to be `#`, a symbol that should occur in any alphabet.
 
 There are probably some other implicit assumptions i forgot to mention (no empty lines, or so), if you find any bugs, 
 you are welcome to either tell me or to fix them.
