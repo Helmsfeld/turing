@@ -35,9 +35,9 @@ The input files should have the following format, see the example files.
 Remarks
 -------
 
-Reading the turing machine is not very robust, therefore some remarks are in order.
+The parser for the turing machine description file is not very robust, therefore some remarks are in order.
 
-* The transition table is not very readable, i know, sorry.
+* The transition table is by current design not very readable, i know, sorry, that makes it hard to write a turing machine description.
 * Comments can only occur directly before the transition table.
 * Internally, the states are numbered from `0` to `<number of states>-1`.
 * There must be exactly one entry (column) for each state.
